@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'Pokemon.dart';
 import 'Habilidad.dart';
-import 'dart:math';
+import 'Combate.dart';
 
 class App {
   static inicioApp() async {
@@ -77,20 +77,10 @@ class App {
       }
     }
   }*/
-
-  static combate() async {
-    stdout.writeln('********** COMBATE POKEMON **********');
-    stdout.writeln('El pokemon 1 es:');
-    int random = Random().nextInt(1301);
-    Pokemon pokemon = await Pokemon().obtenerPokemon(random.toString());
-    imprime(pokemon);
-    stdout.writeln('El pokemon 2 es:');
-    random = Random().nextInt(1301);
-    Pokemon pokemon2 = await Pokemon().obtenerPokemon(random.toString());
-    imprime(pokemon2);
-  }
 }
+
 
 // Al atacar restamos la defensa del otro a nuestro ataque y el resultado es la vida que pierde 
 //el que pierde toda la vida pierde el combate 
 //Si eliges defender incrementas tu defensa un 30 %
+// Turnos alternativos
