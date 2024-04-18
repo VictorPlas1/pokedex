@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 import 'Pokemon.dart';
 import 'Habilidad.dart';
 import 'Combate.dart';
@@ -7,6 +9,7 @@ class App {
   static inicioApp() async {
     Pokemon pokemon1 = new Pokemon();
     Pokemon pokemon2 = new Pokemon();
+
     var opcion;
     String respuesta;
     stdout.writeln('''Elige la opcion que desea realizar
@@ -19,8 +22,7 @@ class App {
         String respuesta = _pedirNombre();
         Pokemon pokemon = await Pokemon().obtenerPokemon(respuesta);
         imprime(pokemon);
-        stdout.writeln("1 - Para conocer los Pokemons con la misma habilidad ");
-      case 1:
+
         break;
       case 2:
         Combate().combate();
@@ -45,6 +47,10 @@ class App {
     stdout.writeln("Habilidades:");
     for (Habilidad elemento in pokemon.habilidades) {
       stdout.writeln("${elemento.nombre?.toUpperCase()}");
+      stdout.writeln("Pokemons con la misma habilidad:");
+      for (String pokemon in elemento.pokemons) {
+        stdout.writeln("$pokemon");
+      }
     }
   }
 
@@ -52,10 +58,11 @@ class App {
     stdout.writeln("Escribe el nombre del Pokemon a consultar");
     return stdin.readLineSync() ?? "error";
   }
-/*
-  static eligeDos() async {
+
+  /* static eligeDos() async {
     Uri url =
         Uri.parse('https://pokeapi.co/api/v2/pokemon/?offset=1&limit=1302');
+    var http;
     var respuesta = await http.get(url);
 
     if (respuesta.statusCode == 200) {
@@ -77,13 +84,6 @@ class App {
       }
     }
   }*/
-
-  mismaHabilidad(Pokemon pokemon, Habilidad elemento) {
-    stdout.writeln("Pokemons con la misma habilidad:");
-    for (String pokemon in elemento.pokemons) {
-      stdout.writeln("$pokemon");
-    }
-  }
 }
 
 

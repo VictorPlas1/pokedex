@@ -20,12 +20,10 @@ class Combate {
   }
 
   static attack(Pokemon pokemon1, Pokemon pokemon2) {
-    // stdout.writeln("${pokemon1.velocidad}${pokemon2.velocidad}");
-    /*if (pokemon1.velocidad! > pokemon2.velocidad!) {
+    if (pokemon1.velocidad! > pokemon2.velocidad!) {
       stdout.writeln("Primero ataca $pokemon1");
     } else if (pokemon1.velocidad! < pokemon2.velocidad!) {
       stdout.writeln("El primero en atacar es $pokemon2");
-    } else {}
-  }*/
+    }
   }
 }
