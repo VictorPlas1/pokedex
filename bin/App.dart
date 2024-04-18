@@ -5,6 +5,8 @@ import 'Combate.dart';
 
 class App {
   static inicioApp() async {
+    Pokemon pokemon1 = new Pokemon();
+    Pokemon pokemon2 = new Pokemon();
     var opcion;
     String respuesta;
     stdout.writeln('''Elige la opcion que desea realizar
@@ -17,10 +19,12 @@ class App {
         String respuesta = _pedirNombre();
         Pokemon pokemon = await Pokemon().obtenerPokemon(respuesta);
         imprime(pokemon);
-
+        stdout.writeln("1 - Para conocer los Pokemons con la misma habilidad ");
+      case 1:
         break;
       case 2:
-        combate();
+        Combate().combate();
+        Combate.attack(pokemon1, pokemon2);
       default:
     }
   }
@@ -41,10 +45,6 @@ class App {
     stdout.writeln("Habilidades:");
     for (Habilidad elemento in pokemon.habilidades) {
       stdout.writeln("${elemento.nombre?.toUpperCase()}");
-      stdout.writeln("Pokemons con la misma habilidad:");
-      for (String pokemon in elemento.pokemons) {
-        stdout.writeln("$pokemon");
-      }
     }
   }
 
@@ -77,6 +77,13 @@ class App {
       }
     }
   }*/
+
+  mismaHabilidad(Pokemon pokemon, Habilidad elemento) {
+    stdout.writeln("Pokemons con la misma habilidad:");
+    for (String pokemon in elemento.pokemons) {
+      stdout.writeln("$pokemon");
+    }
+  }
 }
 
 
